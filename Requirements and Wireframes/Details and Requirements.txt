@@ -1,0 +1,73 @@
+-------------------------------
+P&A Solo Project (Fitness RSVP)
+-------------------------------
+
+Github repo: https://github.com/rstclair26/fitness-rsvp
+
+*** MVP REQUIREMENTS ***
+------------------------
+
+- Application for managing a studio's fitness classes and allowing student sign-up
+
+- Three roles/views:
+	- Administrator (only one administrator allowed)
+	- Instructor
+	- Student
+	
+- Application home page should welcome user and show a login/register button
+
+- Login/register screen will have:
+	- Email and password prompts for login
+	- First name, last name, email, requested role, password, and confirm password prompts for registration (all fields required; email format check; password match check)
+
+- After login or registration:
+	- Administrator: User is logged in and presented with list of all classes sorted alphabetically; link/button to dashboard
+	- Instructor:
+		- Upon registration, user is NOT logged in and is informed that they will need to wait for administrator to approve their account
+		- Upon login:
+			- If user is NOT approved, they will NOT be logged in and instead informed that they will need to wait for administrator to approve their account
+			- If user is approved, they are presented with list of their assigned classes (both open for enrollment and not); sorted alphabetically with classes with enrolled students at the top
+	- Student: User is logged in and presented with list of available classes (open for enrollment); sorted alphabetically with currently enrolled classes at the top
+
+- Administrator list of classes:
+	- Add a class:
+		- Class details (all fields required):
+			- Name
+			- Description
+			- Picture/icon for class
+			- Instructor (only approved instructors are available)
+			- Schedule day (M/W/F, Tu/Th/Sa, Tu/Th, Sa/Su)
+			- Schedule time
+			- Enrollment status
+	- Update a class:
+		- Details (same as above for adding a class)
+		- Note about enrollment status: classes can be closed to enrollment even when students are enrolled - basically closes to new enrollment, but does not unenroll students
+	- View/manage current class enrollment
+		- Shows currently enrolled students
+		- Allows students to be removed from class
+	- Remove class (only available if no students are enrolled)
+	
+- Instructor list of classes:
+	- View/manage current class enrollment
+		- Shows currently enrolled students
+		- Allows students to be removed from class
+
+- Student list of classes:
+	- Enroll in a new class
+	- Unenroll from a current class
+	
+- Administrator has a dashboard:
+	- View instructors:
+		- Can approve new instructors
+		- Can remove instructors from system (can only be removed if they are not instructing any classes)
+	- View students/remove from system (can be removed even if enrolled in classes)
+
+
+*** FEATURE BACKLOG ***
+-----------------------
+
+- Only allow one class for a specific day/time slot (studio only has space for one class at a time)
+
+- Add enrollment limit on a class
+
+- List of classes can be toggled between a list view and a calendar view
