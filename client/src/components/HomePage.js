@@ -12,7 +12,7 @@ const HomePage = () => {
             </div>
             <div className="Body" id="HomePageContent">
                 <img src={ homeImage } alt="Group class" width="50%"/>
-                <h3>Welcome to Fitness RSVP - your studio class scheduler!</h3>
+                <h3>Welcome to Fitness RSVP - your studio class resource!</h3>
                 <h3>Please login/register to continue.</h3>
                 <div>
                     <Link to="/login">
