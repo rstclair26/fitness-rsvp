@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
     },
     isApproved: {
         type: Boolean,
-        default: false
+        default: true
     },
     password: {
         type: String,
@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 UserSchema.virtual("confirmPassword")
-    .get(() => this._confirmPassword)
+    .get(() => this.confirmPassword)
     .set((value) => this.confirmPassword = value);
 
 UserSchema.pre("validate", function(next) {

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const EnrolledStudentSchema = new mongoose.Schema({
-    student_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
-});
+// const EnrolledStudentSchema = new mongoose.Schema({
+//     student_id: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "User"
+//     }
+// });
 
 const FitnessClassSchema = new mongoose.Schema({
     name: {
@@ -20,10 +20,20 @@ const FitnessClassSchema = new mongoose.Schema({
         type: String,
         required: [true, "URL of picture/icon is required"]
     },
-    instructor_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: [true, "Instructor is required"]
+    // instructor_id: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "User",
+    //     required: [true, "Instructor is required"]
+    // },
+    instructor: {
+        type: String,
+        required: [true, "Instructor is required"],
+        enum: [
+            "Robert S.",
+            "Valerie S.",
+            "Sarah C.",
+            "Daniel G."
+        ]
     },
     scheduleDays: {
         type: String,

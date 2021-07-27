@@ -26,11 +26,11 @@ const Login = () => {
   return (
     <div>
       <h2>Login</h2>
-      <h3>If you're already registered, login below:</h3>
-      <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+      <h4>If you're already registered, login below:</h4>
+      <p className="error-text">{ errorMessage ? errorMessage : "" }</p>
       <form onSubmit={ (e) => login(e) }>
         <div>
-          <label>Email</label>
+          <label>Email:</label>
           <input
             type="text"
             name="email"
@@ -39,7 +39,7 @@ const Login = () => {
           />
         </div>
         <div>
-          <label>Password</label>
+          <label>Password:</label>
           <input 
             type="password"
             name="password"
@@ -48,7 +48,7 @@ const Login = () => {
           />
         </div>
         <div className="center">
-          <button type="submit">Login</button>
+            <input className="NormalButton" type="submit" value="Login"/>
         </div>
       </form>
     </div>

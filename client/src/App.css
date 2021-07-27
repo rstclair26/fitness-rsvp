@@ -7,7 +7,7 @@
 
 .Header {
   padding: 0px;
-  background-color: #783F04;
+  background-color: darkslateblue;
   color: white;
   border-bottom: 4px solid black;
   display: flex;
@@ -31,19 +31,19 @@
 }
 
 .Body {
-  background-color: #FF9900;
+  background-color: lightyellow;
   color: black;
   height: 646px;
 }
 
-#CrewBoardBody {
+#ClassListBody {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
 }
 
-.CrewBoardDetailContainer {
+.ClassListDetailContainer {
   width: 800px;
   padding: 10px;
   margin-top: 10px;
@@ -51,19 +51,29 @@
   background-color: white;
   color: black;
   border: 4px solid black;
+  border-radius: 20px;
   display: flex;
 }
 
-.CrewBoardDetailContents {
+.ClassListDetailContents {
   text-align: center;
   width: 100%
 }
 
-.CrewBoardDetailContents h2 {
+.ClassListDetailContents h3 {
   margin-top: 5px;
 }
 
-.CrewBoardDetailButtons {
+.ClassListDetailContents h4 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.ClassListDetailContents h5 {
+  margin: 10px;
+}
+
+.ClassListDetailButtons {
   display: flex;
   justify-content: space-evenly;
 }
@@ -114,14 +124,22 @@
 
 .NormalButton {
   padding: 5px 20px;
-  background-color: #085394;
+  background-color: royalblue;
   color: white;
 }
 
 .DeleteButton {
+  margin-left: 10px;
   padding: 5px 20px;
   background-color: #CF2A27;
   color: white;
+}
+
+.EnrollButton {
+  padding: 5px 20px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
 }
 
 .Error {
@@ -129,11 +147,21 @@
   font-weight: bold;
 }
 
-.CrewBoardDetailImage {
+.ClassListDetailImage {
   width: 100px;
+  height: 100px
 }
 
 #DetailImage {
   width: 300px;
   border: 4px solid black;
+}
+
+#HomePageContent {
+  text-align: center;
+}
+
+#HomePageContent img {
+  margin-top: 100px;
+  border-radius: 20px;
 }

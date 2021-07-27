@@ -3,7 +3,7 @@ const FitnessClass = require("../models/fitnessClass.model");
 module.exports.getAllFitnessClasses = (req, res) => {
     console.log("In getAllFitnessClasses");
 
-    FitnessClass.find({})
+    FitnessClass.find({}).sort({ name: "ascending" })
         .then((fitnessClasses) => {
             res.json(fitnessClasses);
             console.log(fitnessClasses)

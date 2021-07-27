@@ -1,4 +1,6 @@
+import React from "react";
 import { Link } from "@reach/router";
+import homeImage from "../images/group_class.jpg";
 
 const HomePage = () => {
     return (
@@ -6,9 +8,10 @@ const HomePage = () => {
             <div className="Header">
                 <div></div>
                 <h1>Fitness RSVP</h1>
-                <div>
-                    <img src="../images/group_class.jpg" alt="Group class" width="50%"/>
-                </div>
+                <div></div>
+            </div>
+            <div className="Body" id="HomePageContent">
+                <img src={ homeImage } alt="Group class" width="50%"/>
                 <h3>Welcome to Fitness RSVP - your studio class scheduler!</h3>
                 <h3>Please login/register to continue.</h3>
                 <div>

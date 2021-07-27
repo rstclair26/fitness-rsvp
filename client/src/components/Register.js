@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Register = props => {
-  const [confirmReg, setConfirmReg] = useState("");
-  const [errs, setErrs] = useState({});
+const Register = (props) => {
+  const [ confirmReg, setConfirmReg ] = useState("");
+  const [ errors, setErrors ] = useState({});
 
-  // Using a single state object to hold all data
   const [ user, setUser ] = useState({
-    username: "",
-    email: "", 
+    firstName: "",
+    lastName: "",
+    email: "",
+    role: "",
     password: "", 
     confirmPassword: "",
   })
 
-  // using a single function to update the state object
-  //    we can use the input's name attribute as the key in to the object
+  const roles = [
+    "Instructor",
+    "Student"
+  ];
+
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -31,94 +35,83 @@ const Register = props => {
       .then(res => {
         console.log(res.data);
 
-        // when we successfully created the account, reset state for registration form
-        //    We do this if we are NOT navigating automatically away from the page
         setUser({
-          username: "",
-          email: "", 
+          firstName: "",            
+          lastName: "",
+          email: "",
+          role: "",
           password: "", 
           confirmPassword: "",
         })
 
-        setConfirmReg("Thank you for Registering, you can now log in!");
-        setErrs({});  // remember to reset errors state if it was successful
+        setConfirmReg("Your account was successfully created - please continue to login.");
+        setErrors({});
       })
       .catch((err) => {
         console.log(err);
-        setErrs(err.response.data.errors);
+        setErrors(err.response.data.errors);
       });
   };
 
   return (
     <div>
       <h2>Register</h2>
-      <h3>If you're new here, create your account below:</h3>
+      <h4>If you're new here, create your account below:</h4>
       {
-        confirmReg ? 
-          <h4 style={{color: "green"}}>{confirmReg}</h4>
-          : null
+        confirmReg ? <h4 style={{color: "green"}}>{ confirmReg }</h4> : null
       }
-      <form onSubmit={register}>
+      <form onSubmit={ register }>
         <div>
-          <label>Username</label>
+          <label>First Name:</label>
           {
-            errs.username ? 
-              <span className="error-text">{ errs.username.message }</span>
-              : null
+            errors.firstName ? <span className="error-text">{ errors.firstName.message }</span> : null
           }
-          <input
-            type="text"
-            name="username"
-            value={user.username}
-            onChange={(e) => handleChange(e)}
-          />
+          <input type="text" name="firstName" value={ user.firstName } onChange={ (e) => handleChange(e) } />
         </div>
         <div>
-          <label>Email</label>
+          <label>Last Name:</label>
           {
-            errs.email? 
-              <span className="error-text">{ errs.email.message }</span>
-              : null
+            errors.lastName ? <span className="error-text">{ errors.lastName.message }</span> : null
           }
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            onChange={ handleChange }
-          />
+          <input type="text" name="lastName" value={ user.lastName } onChange={ (e) => handleChange(e) } />
         </div>
         <div>
-          <label>Password</label>
+          <label>Email:</label>
           {
-            errs.password ? 
-              <span className="error-text">{ errs.password.message }</span>
-              : null
+            errors.email ? <span className="error-text">{ errors.email.message }</span> : null
           }
-          <input
-            type="password"
-            name="password"
-            value={user.password}
-            onChange={ handleChange }
-          />
+          <input type="email" name="email" value={ user.email } onChange={ (e) => handleChange(e) } />
         </div>
         <div>
-          <label>Confirm Password</label>
+          <label>Role:</label>
           {
-            errs.confirmPassword? 
-              <span className="error-text">{ errs.confirmPassword.message }</span>
-              : null
+            errors.role ? <span className="error-text">{ errors.role.message }</span> : null
           }
-          <input
-            type="password"
-            name="confirmPassword"
-            value={user.confirmPassword}
-            onChange={ handleChange }
-          />
+          <select id="role" name="role" value={ user.role } onChange={ (e) => handleChange(e) }>
+            <option value=""></option>
+            {
+              roles.map((role) => (
+                <option key={ role } value={ role }>{ role }</option>
+              ))
+            }
+          </select>
+        </div>
+        <div>
+          <label>Password:</label>
+          {
+            errors.password ? <span className="error-text">{ errors.password.message }</span> : null
+          }
+          <input type="password" name="password" value={ user.password } onChange={ (e) => handleChange(e) } />
+        </div>
+        <div>
+          <label>Confirm Password:</label>
+          {
+            errors.confirmPassword ? <span className="error-text">{ errors.confirmPassword.message }</span> : null
+          }
+          <input type="password" name="confirmPassword" value={ user.confirmPassword } onChange={ (e) => handleChange(e) } />
         </div>
         <div className="center">
-          <button 
-            type="submit"
-          >Register Me</button>
+            <input className="NormalButton" type="submit" value="Create Account"/>
         </div>
       </form>
     </div>

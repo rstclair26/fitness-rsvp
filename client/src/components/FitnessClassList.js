@@ -15,7 +15,7 @@ const FitnessClassList = () => {
             .catch((err) => {
                 console.log(err);
                 if (err.response.status === 401) {
-                    navigate("/");
+                    navigate("/login");
                 }
             });
     }, []);
@@ -23,9 +23,11 @@ const FitnessClassList = () => {
     const postDeleteHandler = (deletedFitnessClassId) => {
         let updatedFitnessClasses = fitnessClasses.filter((fitnessClass) => fitnessClass._id !== deletedFitnessClassId);
         setFitnessClasses(updatedFitnessClasses);
-    }
+    };
 
-    const logout = () => {
+    const logout = (e) => {
+        e.preventDefault();
+
         axios.post("http://localhost:8000/api/users/logout", {}, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
@@ -34,23 +36,23 @@ const FitnessClassList = () => {
             .catch((err) => {
                 console.log(err);
             })
-    }
+    };
 
     return (
         <div>
             <div className="Header">
                 <div></div>
-                <h1>Pirate Crew</h1>
+                <h1>Fitness RSVP</h1>
                 <div>
                     <Link to="/class/new">
                         <button className="NormalButton">Add Class</button>
                     </Link>
                 </div>
                 <div>
-                    <button className="NormalButton" onClick={ logout() }>Logout</button>
+                    <button className="NormalButton" onClick={ (e) => logout(e) }>Logout</button>
                 </div>
             </div>
-            <div className="Body" id="CrewBoardBody">
+            <div className="Body" id="ClassListBody">
                 {
                     fitnessClasses.map((fitnessClass, index) => {
                         return (
