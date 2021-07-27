@@ -32,7 +32,7 @@ const FitnessClassDetail = (props) => {
                 <h4>{ fitnessClass.scheduleDays } at { fitnessClass.scheduleTime }{ fitnessClass.scheduleTimeAmPm }</h4>
                 <div className="ClassListDetailButtons">
                     <div>
-                        <button className="EnrollButton">Enroll</button>
+                        <button className="BoldActionButton">Enroll</button>
                     </div>
                     <div>
                         <Link to={ "/class/edit/" + id }>

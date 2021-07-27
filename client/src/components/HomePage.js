@@ -16,7 +16,7 @@ const HomePage = () => {
                 <h3>Please login/register to continue.</h3>
                 <div>
                     <Link to="/login">
-                        <button className="NormalButton">Login / Register</button>
+                        <button className="BoldActionButton">Login / Register</button>
                     </Link>
                 </div>
             </div>
