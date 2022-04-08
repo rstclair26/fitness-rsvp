@@ -13,21 +13,21 @@ const FitnessClassSchema = new mongoose.Schema({
         type: String,
         required: [true, "URL of picture/icon is required"]
     },
-    // instructor: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User",
-    //     required: [true, "Instructor is required"]
-    // },
     instructor: {
-        type: String,
-        required: [true, "Instructor is required"],
-        enum: [
-            "Robert S.",
-            "Valerie S.",
-            "Sarah C.",
-            "Daniel G."
-        ]
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: [true, "Instructor is required"]
     },
+    // instructor: {
+    //     type: String,
+    //     required: [true, "Instructor is required"],
+    //     enum: [
+    //         "Robert S.",
+    //         "Valerie S.",
+    //         "Sarah C.",
+    //         "Daniel G."
+    //     ]
+    // },
     scheduleDays: {
         type: String,
         required: [true, "Schedule days are required"],
@@ -62,13 +62,13 @@ const FitnessClassSchema = new mongoose.Schema({
     enrollmentAllowed: {
         type: Boolean,
         default: false
-    },
-    enrolledStudents: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ]
+    }
+    // enrolledStudents: [
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: "User"
+    //     }
+    // ]
 }, { timestamps: true });
 
 module.exports = mongoose.model("FitnessClass", FitnessClassSchema);

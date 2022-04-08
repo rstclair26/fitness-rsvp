@@ -10,6 +10,7 @@ const Register = (props) => {
     lastName: "",
     email: "",
     role: "",
+    isApproved: true,
     password: "", 
     confirmPassword: "",
   })
@@ -20,9 +21,11 @@ const Register = (props) => {
   ];
 
   const handleChange = (e) => {
+    setConfirmReg("");
     setUser({
       ...user,
       [e.target.name]: e.target.value,
+      [isApproved]: user.role === "Instructor" ? false : true
     })
   }
 
@@ -40,8 +43,9 @@ const Register = (props) => {
           lastName: "",
           email: "",
           role: "",
+          isApproved: true,
           password: "", 
-          confirmPassword: "",
+          confirmPassword: ""
         })
 
         setConfirmReg("Your account was successfully created - please continue to login.");
@@ -57,9 +61,6 @@ const Register = (props) => {
     <div>
       <h2>Register</h2>
       <h4>If you're new here, create your account below:</h4>
-      {
-        confirmReg ? <h4 style={{color: "green"}}>{ confirmReg }</h4> : null
-      }
       <form onSubmit={ register }>
         <div>
           <label>First Name:</label>
@@ -114,6 +115,9 @@ const Register = (props) => {
             <input className="NormalButton" type="submit" value="Create Account"/>
         </div>
       </form>
+      {
+        confirmReg ? <h4 style={{color: "green"}}>{ confirmReg }</h4> : null
+      }
     </div>
   );
 };

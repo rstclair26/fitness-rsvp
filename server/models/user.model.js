@@ -30,7 +30,13 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, "Password is required"]
-    }
+    },
+    enrolledClasses: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "FitnessClass"
+        }
+    ]
 }, { timestamps: true });
 
 UserSchema.virtual("confirmPassword")
