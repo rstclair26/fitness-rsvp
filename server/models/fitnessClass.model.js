@@ -18,16 +18,6 @@ const FitnessClassSchema = new mongoose.Schema({
         ref: "User",
         required: [true, "Instructor is required"]
     },
-    // instructor: {
-    //     type: String,
-    //     required: [true, "Instructor is required"],
-    //     enum: [
-    //         "Robert S.",
-    //         "Valerie S.",
-    //         "Sarah C.",
-    //         "Daniel G."
-    //     ]
-    // },
     scheduleDays: {
         type: String,
         required: [true, "Schedule days are required"],
@@ -42,13 +32,30 @@ const FitnessClassSchema = new mongoose.Schema({
         type: String,
         required: [true, "Schedule time with AM/PM is required"],
         enum: [
+            "12:00",
+            "12:30",
+            "1:00",
+            "1:30",
+            "2:00",
+            "2:30",
+            "3:00",
+            "3:30",
+            "4:00",
+            "4:30",
+            "5:00",
+            "5:30",
             "6:00",
             "6:30",
             "7:00",
             "7:30",
             "8:00",
             "8:30",
-            "9:00"
+            "9:00",
+            "9:30",
+            "10:00",
+            "10:30",
+            "11:00",
+            "11:30"
         ]
     },
     scheduleTimeAmPm: {
@@ -63,12 +70,6 @@ const FitnessClassSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-    // enrolledStudents: [
-    //     {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "User"
-    //     }
-    // ]
 }, { timestamps: true });
 
 module.exports = mongoose.model("FitnessClass", FitnessClassSchema);

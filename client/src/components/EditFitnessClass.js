@@ -15,21 +15,27 @@ const EditFitnessClass = (props) => {
         scheduleTimeAmPm: ""
     });
 
-    const [ errors, setErrors ] = useState({});
-
     useEffect(() => {
         axios.get("http://localhost:8000/api/classes/" + id)
             .then((res) => setFitnessClass(res.data))
             .catch((err) => console.log(err))
     }, [id])
 
-    const instructors = [
-        "Robert S.",
-        "Valerie S.",
-        "Sarah C.",
-        "Daniel G."
-];
-    
+    const [ instructors, setInstructors ] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:80/api/users/instructors")
+            .then((res) => {
+                console.log(res.data);
+                setInstructors(res.data);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }, []);
+
+    const [ errors, setErrors ] = useState({});
+
     const days = [
         "Monday/Wednesday/Friday",
         "Tuesday/Thursday",
@@ -38,6 +44,18 @@ const EditFitnessClass = (props) => {
     ];
 
     const times = [
+        "12:00",
+        "12:30",
+        "1:00",
+        "1:30",
+        "2:00",
+        "2:30",
+        "3:00",
+        "3:30",
+        "4:00",
+        "4:30",
+        "5:00",
+        "5:30",
         "6:00",
         "6:30",
         "7:00",
@@ -45,6 +63,11 @@ const EditFitnessClass = (props) => {
         "8:00",
         "8:30",
         "9:00",
+        "9:30",
+        "10:00",
+        "10:30",
+        "11:00",
+        "11:30"
     ];
 
     const ampm = [
@@ -145,7 +168,7 @@ const EditFitnessClass = (props) => {
                                 <option value=""></option>
                                 {
                                     instructors.map((instructor) => (
-                                        <option key={ instructor } value={ instructor } selected={ fitnessClass.instructor === instructor }>{ instructor }</option>
+                                        <option key={ instructor._id } value={ instructor._id } selected={ fitnessClass.instructor === instructor._id }>{ instructor.firstName }, { instructor.lastName }</option>
                                     ))
                                 }
                             </select></div>
