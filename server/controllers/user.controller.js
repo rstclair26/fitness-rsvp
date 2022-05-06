@@ -89,7 +89,7 @@ module.exports.getAllAdministrators = (req, res) => {
 module.exports.getAllInstructors = (req, res) => {
     console.log("In getAllInstructors");
 
-    User.find({ role: "Instructor" })
+    User.find({ role: "Instructor" }).sort({ lastName: "ascending", firstName: "ascending" })
         .then((users) => {
             res.json(users);
             console.log(users);
