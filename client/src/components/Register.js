@@ -16,6 +16,7 @@ const Register = (props) => {
   })
 
   const roles = [
+    "Administrator",
     "Instructor",
     "Student"
   ];
@@ -25,7 +26,7 @@ const Register = (props) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
-      [isApproved]: user.role === "Instructor" ? false : true
+      [user.isApproved]: user.role === "Instructor" ? false : true
     })
   }
 

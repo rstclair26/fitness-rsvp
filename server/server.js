@@ -17,6 +17,5 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./routes/user.routes")(app);
 require("./routes/fitnessClass.routes")(app);
-require("./routes/enrollment.routes")(app);
 
 app.listen(process.env.SERVER_PORT, () => console.log(`Server listening on port ${process.env.SERVER_PORT}`));

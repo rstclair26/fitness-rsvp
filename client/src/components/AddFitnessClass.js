@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, navigate } from "@reach/router";
 
@@ -17,7 +17,7 @@ const AddFitnessClass = () => {
     const [ instructors, setInstructors ] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:80/api/users/instructors")
+        axios.get("http://localhost:8000/api/users/instructors")
             .then((res) => {
                 console.log(res.data);
                 setInstructors(res.data);
@@ -161,7 +161,7 @@ const AddFitnessClass = () => {
                                 <option value=""></option>
                                 {
                                     instructors.map((instructor) => (
-                                        <option key={ instructor._id } value={ instructor._id }>{ instructor.firstName }, { instructor.lastName }</option>
+                                        <option key={ instructor._id } value={ instructor._id }>{ instructor.lastName }, { instructor.firstName }</option>
                                     ))
                                 }
                             </select></div>

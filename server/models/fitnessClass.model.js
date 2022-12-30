@@ -13,7 +13,7 @@ const FitnessClassSchema = new mongoose.Schema({
         type: String,
         required: [true, "URL of picture/icon is required"]
     },
-    instructor: {
+    instructor_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: [true, "Instructor is required"]
