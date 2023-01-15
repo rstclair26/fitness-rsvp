@@ -15,6 +15,7 @@ const Login = () => {
       },
       { withCredentials: true })
       .then((res) => {
+        console.log(`USER INFO: ${res.data.userLoggedIn.lastName}, ${res.data.userLoggedIn.firstName} (${res.data.userLoggedIn.role})`);
         navigate("/classes");
       })
       .catch(err => {

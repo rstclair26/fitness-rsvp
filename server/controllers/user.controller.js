@@ -8,10 +8,23 @@ module.exports.register = (req, res) => {
     newUser.save()
         .then(() => {
             console.log("Successful user registration");
-            res.json({
-                message: "Successfully registered user",
-                user: newUser
-            })
+            res.cookie("usertoken",
+                jwt.sign({
+                    _id: newUser._id,
+                    email: newUser.email
+                }, process.env.JWT_SECRET),
+                {
+                    httpOnly: true,
+                    expires: new Date(Date.now() + 86400000)
+                })
+                .json({
+                    message: "Successfully registered and logged in",
+                    userLoggedIn: {
+                        firstName: newUser.firstName,
+                        lastName: newUser.lastName,
+                        role: newUser.role
+                    }
+                })
         })
         .catch((err) => {
             console.log(err);

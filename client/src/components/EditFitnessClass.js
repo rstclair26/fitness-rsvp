@@ -16,7 +16,7 @@ const EditFitnessClass = (props) => {
     });
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/classes/" + id)
+        axios.get("http://localhost:8000/api/classes/" + id, { withCredentials: true })
             .then((res) => setFitnessClass(res.data))
             .catch((err) => console.log(err))
     }, [id])
@@ -24,7 +24,7 @@ const EditFitnessClass = (props) => {
     const [ instructors, setInstructors ] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:80/api/users/instructors")
+        axios.get("http://localhost:80/api/users/instructors", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setInstructors(res.data);
@@ -78,7 +78,7 @@ const EditFitnessClass = (props) => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
     
-        axios.put("http://localhost:8000/api/classes/" + id, fitnessClass)
+        axios.put("http://localhost:8000/api/classes/" + id, fitnessClass, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
 

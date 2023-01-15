@@ -7,7 +7,7 @@ const FitnessClassList = () => {
     const [ fitnessClasses, setFitnessClasses ] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/classes")
+        axios.get("http://localhost:8000/api/classes", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setFitnessClasses(res.data);

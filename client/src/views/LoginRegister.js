@@ -1,15 +1,12 @@
 import React from "react";
+import Header from "../components/Header";
 import Login from "../components/Login";
 import Register from "../components/Register";
 
 const LoginRegister = () => {
 	return (
         <div>
-            <div className="Header">
-                <div></div>
-                <h1>Fitness RSVP</h1>
-                <div></div>
-            </div>
+            <Header context="loginRegister" />
             <div className="Body">
                 <div className="AddLeft">
                     <Login />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { navigate } from "@reach/router";
 
 const Register = (props) => {
   const [ confirmReg, setConfirmReg ] = useState("");
@@ -37,20 +38,21 @@ const Register = (props) => {
       user,
       { withCredentials: true })
       .then(res => {
-        console.log(res.data);
+        console.log(`USER INFO: ${res.data.userLoggedIn.lastName}, ${res.data.userLoggedIn.firstName} (${res.data.userLoggedIn.role})`);
+        navigate("/classes");
 
-        setUser({
-          firstName: "",            
-          lastName: "",
-          email: "",
-          role: "",
-          isApproved: true,
-          password: "", 
-          confirmPassword: ""
-        })
+        // setUser({
+        //   firstName: "",            
+        //   lastName: "",
+        //   email: "",
+        //   role: "",
+        //   isApproved: true,
+        //   password: "", 
+        //   confirmPassword: ""
+        // })
 
-        setConfirmReg("Your account was successfully created - please continue to login.");
-        setErrors({});
+        // setConfirmReg("Your account was successfully created - please continue to login.");
+        // setErrors({});
       })
       .catch((err) => {
         console.log(err);
@@ -116,9 +118,9 @@ const Register = (props) => {
             <input className="NormalButton" type="submit" value="Create Account"/>
         </div>
       </form>
-      {
+      {/* {
         confirmReg ? <h4 style={{color: "green"}}>{ confirmReg }</h4> : null
-      }
+      } */}
     </div>
   );
 };

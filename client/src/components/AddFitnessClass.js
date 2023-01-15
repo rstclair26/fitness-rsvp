@@ -17,7 +17,7 @@ const AddFitnessClass = () => {
     const [ instructors, setInstructors ] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/users/instructors")
+        axios.get("http://localhost:8000/api/users/instructors", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setInstructors(res.data);
@@ -71,7 +71,7 @@ const AddFitnessClass = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
     
-        axios.post("http://localhost:8000/api/classes", fitnessClass)
+        axios.post("http://localhost:8000/api/classes", fitnessClass, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
 
