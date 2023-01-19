@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, navigate } from "@reach/router";
+import axios from "../api/axios";
 
 const AddFitnessClass = () => {
     const [ fitnessClass, setFitnessClass ] = useState({
@@ -17,7 +17,7 @@ const AddFitnessClass = () => {
     const [ instructors, setInstructors ] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/users/instructors", { withCredentials: true })
+        axios.get("/api/users/instructors", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setInstructors(res.data);
@@ -71,7 +71,7 @@ const AddFitnessClass = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
     
-        axios.post("http://localhost:8000/api/classes", fitnessClass, { withCredentials: true })
+        axios.post("/api/classes", fitnessClass, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
 
@@ -99,7 +99,7 @@ const AddFitnessClass = () => {
     const logout = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/users/logout", {}, { withCredentials: true })
+        axios.post("/api/users/logout", {}, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 navigate("/");

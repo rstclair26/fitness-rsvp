@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, navigate } from "@reach/router";
+import axios from "../api/axios";
 
 const EditFitnessClass = (props) => {
     const { id } = props;
@@ -16,7 +16,7 @@ const EditFitnessClass = (props) => {
     });
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/classes/" + id, { withCredentials: true })
+        axios.get("/api/classes/" + id, { withCredentials: true })
             .then((res) => setFitnessClass(res.data))
             .catch((err) => console.log(err))
     }, [id])
@@ -24,7 +24,7 @@ const EditFitnessClass = (props) => {
     const [ instructors, setInstructors ] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:80/api/users/instructors", { withCredentials: true })
+        axios.get("/api/users/instructors", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setInstructors(res.data);
@@ -78,7 +78,7 @@ const EditFitnessClass = (props) => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
     
-        axios.put("http://localhost:8000/api/classes/" + id, fitnessClass, { withCredentials: true })
+        axios.put("/api/classes/" + id, fitnessClass, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
 
@@ -106,7 +106,7 @@ const EditFitnessClass = (props) => {
     const logout = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/users/logout", {}, { withCredentials: true })
+        axios.post("/api/users/logout", {}, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 navigate("/");

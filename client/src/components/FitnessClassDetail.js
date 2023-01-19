@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "@reach/router";
+import axios from "../api/axios";
 
 const FitnessClassDetail = (props) => {
     const { id, postDeleteHandler } = props;
     const [ fitnessClass, setFitnessClass ] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/classes/" + id, { withCredentials: true })
+        axios.get("/api/classes/" + id, { withCredentials: true })
             .then((res) => setFitnessClass(res.data))
             .catch((err) => console.log(err))
     }, [id])
@@ -15,7 +15,7 @@ const FitnessClassDetail = (props) => {
     const onDeleteHandler = (e, id) => {
         e.preventDefault();
 
-        axios.delete("http://localhost:8000/api/classes/" + id, { withCredentials: true })
+        axios.delete("/api/classes/" + id, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 postDeleteHandler(id);

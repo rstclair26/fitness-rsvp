@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { navigate } from "@reach/router";
+import axios from "../api/axios";
 
 const Register = (props) => {
   const [ confirmReg, setConfirmReg ] = useState("");
@@ -34,7 +34,7 @@ const Register = (props) => {
   const register = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:8000/api/users/register", 
+    axios.post("/api/users/register", 
       user,
       { withCredentials: true })
       .then(res => {

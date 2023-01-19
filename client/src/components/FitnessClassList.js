@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, navigate } from "@reach/router";
+import axios from "../api/axios";
 import FitnessClassDetail from "./FitnessClassDetail";
 
 const FitnessClassList = () => {
     const [ fitnessClasses, setFitnessClasses ] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/classes", { withCredentials: true })
+        axios.get("/api/classes", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setFitnessClasses(res.data);
@@ -28,7 +28,7 @@ const FitnessClassList = () => {
     const logout = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/users/logout", {}, { withCredentials: true })
+        axios.post("/api/users/logout", {}, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 navigate("/");

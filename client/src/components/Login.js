@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { navigate } from "@reach/router";
+import axios from "../api/axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ const Login = () => {
 
   const login = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8000/api/users/login", { 
+    axios.post("/api/users/login", { 
         email: email, 
         password: password,
       },
